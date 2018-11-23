@@ -1,0 +1,31 @@
+{
+  "name": "system-server",
+  "version": "1.0.0",
+  "description": "tiny server for displaying local machine data",
+  "preferGlobal": true,
+  "bin": {
+    "system-server-cli": "./bin/index.js"
+  },
+  "main": "dist/system-server.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jordan Jones <proxima.aust@gmail.com> (http://jordnjones.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^2.0.1",
+    "boxen": "^2.0.0",
+    "chalk": "^2.4.1",
+    "express": "^4.16.4",
+    "forever-monitor": "^1.7.1",
+    "systeminformation": "^3.45.9",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-uglify": "^6.0.0"
+  }
+}
