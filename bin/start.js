@@ -1,6 +1,6 @@
 const systemServer = require('../')
 
-module.exports = (port => {
-  console.log(process.argv.length)
-  systemServer.listen(process.argv.length > 4 ? port : process.argv[2])
+module.exports = (() => {
+  let args = process.argv
+  systemServer.listen(args[2])
 })()

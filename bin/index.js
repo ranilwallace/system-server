@@ -10,6 +10,8 @@ const boxen = require('boxen')
 
 const lookup = promisify(dns.lookup)
 
+const systemServer = require('../')
+
 const getHelp = () => chalk`
   {bold.cyan system-server} - Serves up local data (cpu, memory, disk etc) for a given machine
  
@@ -68,11 +70,10 @@ const getHelp = () => chalk`
       margin: 1
     })
   )
-  if (args['--detach']) {
-    require('./daemon')(port)
-    process.exit(1)
+  if (!args['--detach']) {
+    systemServer.listen(port)
   } else {
-    require('./start')(port)
+    require('./daemon')(port)
     process.exit(1)
   }
 })()
