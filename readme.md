@@ -9,7 +9,7 @@ npm i -g system-server
 ## Usage
 Main use case of system-server would be to access very detailed information on a local machine over HTTP.
 
-`system-server` only has one route `/` below is a empty sample response OR see it action here
+`system-server` only has one route `/` below is a empty sample response OR see it action here <a href="http://142.93.1.203:8000/" target="_blank">142.93.1.203</a>
 
 ```json
   {
