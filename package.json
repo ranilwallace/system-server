@@ -1,6 +1,6 @@
 {
   "name": "system-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "tiny server for displaying local machine data",
   "bin": {
     "system-server": "./bin/index.js"

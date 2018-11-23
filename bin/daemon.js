@@ -2,7 +2,7 @@ const forever = require('forever-monitor')
 const { resolve } = require('path')
 
 module.exports = ((port = 8000) => {
-  var child = new forever.Monitor(resolve('./bin/start.js'), {
+  var child = new forever.Monitor(resolve('./start.js'), {
     max: 3,
     args: [port]
   })
