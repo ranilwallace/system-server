@@ -2,7 +2,7 @@
 const dns = require('dns')
 const os = require('os')
 const { promisify } = require('util')
-
+const { resolve, join } = require('path')
 const pkg = require('../package.json')
 const chalk = require('chalk')
 const arg = require('arg')
@@ -74,7 +74,7 @@ const getHelp = () => chalk`
   if (!args['--detach']) {
     server = systemServer.listen(port)
   } else {
-    require('./daemon')
+    require(resolve(join(__dirname, './daemon.js')))(port)
     process.exit(1)
   }
   process.on('exit', code => {
