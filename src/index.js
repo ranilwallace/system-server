@@ -7,6 +7,7 @@ app.use('/', async (req, res) => {
     const results = await getAllData()
     res.json({
       _id: v4(),
+      timestamp: Math.floor(Date.now() / 1000),
       ...results
     })
   } catch (error) {
