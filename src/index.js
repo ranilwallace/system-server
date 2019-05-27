@@ -112,7 +112,6 @@ app.use('/', async (req, res) => {
     res.json({
       _id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
-      timestamp: Math.floor(Date.now() / 1000),
       ...results
     })
   } catch (error) {
