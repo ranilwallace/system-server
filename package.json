@@ -14,11 +14,13 @@
   "author": "Jordan Jones <proxima.aust@gmail.com> (http://jordnjones.com/)",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^2.5.0",
     "arg": "^2.0.1",
     "boxen": "^2.0.0",
     "chalk": "^2.4.1",
     "express": "^4.16.4",
     "forever-monitor": "^1.7.1",
+    "graphql": "^14.3.1",
     "systeminformation": "^3.45.9",
     "uuid": "^3.3.2"
   },

@@ -1,14 +1,4 @@
-const { getAllData } = require('systeminformation')
-const app = require('express')()
-
-//const { typeDefs, resolvers } = require('./gqlConfigTBD');
-const { indentify } = require('../src/indentify');
-
-const { ApolloServer, gql } = require('apollo-server-express');
-
-
-var results = [];
-const uniqueID = indentify();
+const { gql } = require('apollo-server-express');
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
@@ -84,41 +74,94 @@ const typeDefs = gql`
   }
 `;
 
+//   type CPU{
+
+//   }
+
+//   type Graphics{
+
+//   }
+
+//   type Net{
+
+//   }
+
+//   type MemLayout{
+
+//   }
+
+//   type DiskLayout{
+
+//   }
+
+//   type Time{
+
+//   }
+
+//   type cpuCurrentspeed{
+
+//   }
+
+//   type Services{
+
+//   }
+
+//   type CurrentLoad{
+
+//   }
+
+//   type fsSize{
+
+//   }
+
+//   type Mem{
+
+//   }
+
+//   type NetworkConnections{
+
+//   }
+
+//   type NetworkStats{
+
+//   }
+
+//   type Temp{
+
+//   }
+
+//   type fsStats{
+
+//   }
+
+//   type DisksIO{
+
+//   }
+
+//   type Users{
+
+//   }
+
+//   type Battery{
+
+//   }
+
+//   type Processes{
+
+//   }
+// `;
+
+
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
     base: () => {
-      return {_id: uniqueID, ...results};
+      return {_id: v4(), ...results};
     },
   },
 };
 
-
-function getSysInfo(){
-  getAllData().then((value) => {
-    results = value;
-  }, (reason) => {
-    results = [];
-    console.log(reason);
-  });
+module.exports = {
+  typeDefs,
+  resolvers
 }
-
-const server = new ApolloServer({ typeDefs, resolvers });
-server.applyMiddleware({ app });
-getSysInfo();
-
-app.use('/', async (req, res) => {
-  try {
-    res.json({
-      _id: uniqueID,
-      timestamp: Math.floor(Date.now() / 1000),
-      timestamp: Math.floor(Date.now() / 1000),
-      ...results
-    })
-  } catch (error) {
-    res.end(error)
-  }
-})
-
-
-export default app
