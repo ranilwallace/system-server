@@ -30,8 +30,9 @@ const identify = async () => {
 }
 
 app.use('/', async (req, res) => {
-  const uniqueID = await identify()
+  const uniqueID = await identify();
   try {
+    const results = await getAllData();
     res.json({
       id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
