@@ -74,7 +74,7 @@ const getHelp = () => chalk`
   if (!args['--detach']) {
     server = systemServer.listen(port)
   } else {
-    require('./daemon')
+    require('./daemon')(port)
     process.exit(1)
   }
   process.on('exit', code => {
