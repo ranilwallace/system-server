@@ -1,24 +1,12 @@
 const { getAllData } = require('systeminformation')
 const app = require('express')()
 
-const { indentify } = require('../src/indentify');
-
-var results = [];
-const uniqueID = indentify();
-
-function getSysInfo(){
-  getAllData().then((value) => {
-    results = value;
-  }, (reason) => {
-    results = [];
-    console.log(reason);
-  });
-}
-
-getSysInfo();
+const { identify } = require('../src/identify');
 
 app.use('/', async (req, res) => {
+  const uniqueID = await identify();
   try {
+    const results = await getAllData();
     res.json({
       _id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
