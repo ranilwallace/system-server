@@ -1,12 +1,14 @@
 const { getAllData } = require('systeminformation')
-const { v4 } = require('uuid')
 const app = require('express')()
 
+const { identify } = require('../src/identify');
+
 app.use('/', async (req, res) => {
+  const uniqueID = await identify();
   try {
-    const results = await getAllData()
+    const results = await getAllData();
     res.json({
-      _id: v4(),
+      _id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
       ...results
     })
@@ -14,5 +16,6 @@ app.use('/', async (req, res) => {
     res.end(error)
   }
 })
+
 
 export default app
