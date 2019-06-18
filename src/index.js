@@ -36,6 +36,13 @@ var options = {
   cert: fs.readFileSync(__dirname + '/../ssl/server.cert')
 }
 
+const fs = require('fs');
+
+var options = {
+  key: fs.readFileSync(__dirname + '/../ssl/server.key'),
+  cert: fs.readFileSync(__dirname + '/../ssl/server.cert')
+}
+
 app.use('/', async (req, res) => {
   const uniqueID = await identify();
   try {
