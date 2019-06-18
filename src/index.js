@@ -29,6 +29,13 @@ const identify = async () => {
   }
 }
 
+const fs = require('fs');
+
+var options = {
+  key: fs.readFileSync(__dirname + '/../ssl/server.key'),
+  cert: fs.readFileSync(__dirname + '/../ssl/server.cert')
+}
+
 app.use('/', async (req, res) => {
   const uniqueID = await identify();
   try {
@@ -43,5 +50,6 @@ app.use('/', async (req, res) => {
   }
 })
 
+var server = https.createServer(options, app);
 
-export default app
+export default server

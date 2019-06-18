@@ -55,7 +55,7 @@ const getHelp = () => chalk`
   let networkaddress
   try {
     const { address: ip } = await lookup(os.hostname())
-    networkaddress = `http://${ip}:${port}`
+    networkaddress = `https://${ip}:${port}`
   } catch (err) {
     console.error(`DNS looup failed: ${err.message}`)
   }
