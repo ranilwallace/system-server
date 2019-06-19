@@ -10,6 +10,7 @@ exports.typeDefs = gql`
 
   type Information {
     _id: String,
+    timestamp: Int,
     version: String,
     system: System,
     bios: Bios,
