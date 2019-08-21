@@ -53,6 +53,13 @@ npm run build
 ```
 Files are outputted to `dist/`.
 
+## Generate a self-signed SSL certificate
+To generate a self-signed certificate run
+```javascript
+npm run ssl
+```
+This is needed for the server to operate on https.
+
 ### Related
 
 >[systeminformation](https://www.npmjs.com/package/systeminformation)
