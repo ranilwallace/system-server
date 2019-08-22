@@ -74,7 +74,7 @@ app.use('/', async (req, res) => {
   const uniqueID = await identify()
   try {
     res.json({
-      id: uniqueID,
+      _id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
       ...results
     })
