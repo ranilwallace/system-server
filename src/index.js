@@ -70,9 +70,44 @@ const identify = async () => {
   }
 }
 
+const fs = require('fs');
+
+var options = {
+  key: fs.readFileSync(__dirname + '/../ssl/server.key'),
+  cert: fs.readFileSync(__dirname + '/../ssl/server.cert')
+}
+
+const fs = require('fs');
+
+var options = {
+  key: fs.readFileSync(__dirname + '/../ssl/server.key'),
+  cert: fs.readFileSync(__dirname + '/../ssl/server.cert')
+}
+
+const identify = async () => {
+  const homedir = require('os').homedir()
+  const filePath = path.normalize(homedir + '/.system-server/.uuid')
+  try {
+    const exists = await fileExists(filePath)
+
+    if (exists) {
+      const file = await readFile(filePath)
+      return file.toString()
+    } else {
+      var id = v4()
+      await mkDir(homedir + '/.system-server/')
+      await writeFile(filePath, id)
+      return id
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 app.use('/', async (req, res) => {
   const uniqueID = await identify()
   try {
+    const results = await getAllData()
     res.json({
       _id: uniqueID,
       timestamp: Math.floor(Date.now() / 1000),
@@ -83,5 +118,6 @@ app.use('/', async (req, res) => {
   }
 })
 
+var server = https.createServer(options, app);
 
-export default app
+export default server
