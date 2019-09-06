@@ -46,13 +46,13 @@ const getResultsAsync = async () => {
 getResultsAsync()
 
 
-const server = new ApolloServer({ typeDefs, resolvers })
-server.applyMiddleware({ app })
+const apollo = new ApolloServer({ typeDefs, resolvers })
+apollo.applyMiddleware({ app })
 
 
 const identify = async () => {
   const homedir = require('os').homedir()
-  const filePath = path.normalize(homedir + '/system-server/.uuid')
+  const filePath = path.normalize(homedir + '/.system-server/.uuid')
   try {
     const exists = await fileExists(filePath)
 
@@ -61,7 +61,7 @@ const identify = async () => {
       return file.toString()
     } else {
       var id = v4()
-      await mkDir(homedir + '/system-server/')
+      await mkDir(homedir + '/.system-server/')
       await writeFile(filePath, id)
       return id
     }
