@@ -8,7 +8,8 @@
   "main": "dist/system-server.js",
   "scripts": {
     "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ssl": "mkdir ssl && openssl req -nodes -new -x509 -keyout ./ssl/server.key -out ./ssl/server.cert"
   },
   "keywords": [],
   "author": "Jordan Jones <proxima.aust@gmail.com> (http://jordnjones.com/)",
